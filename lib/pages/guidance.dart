@@ -33,14 +33,14 @@ class _GuidanceState extends State<Guidance> {
                 textDirection: TextDirection.rtl,
                 style: TextStyle(color: Colors.white, fontSize: 18)),
             onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => HomePage(),
-                  ),
-                );
-                setState(() {});
-              },
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => HomePage(),
+                ),
+              );
+              setState(() {});
+            },
           ),
           actions: [
             FlatButton(
@@ -60,32 +60,17 @@ class _GuidanceState extends State<Guidance> {
               ),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
             ),
-            // FlatButton(
-            //   textColor: Colors.white,
-            //   onPressed: () {
-            //     Navigator.push<void>(
-            //       context,
-            //       MaterialPageRoute<void>(
-            //         builder: (BuildContext context) => Guidance(),
-            //       ),
-            //     );
-            //     setState(() {});
-            //   },
-              //   child: Text("الدليل",
-              //       style: TextStyle(color: Colors.white, fontSize: 20)),
-              //   shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-              // ),
-              FlatButton(
-                textColor: Colors.white,
-                onPressed: () {
-                  Navigator.push<void>(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => BillingPage(),
-                    ),
-                  );
-                  setState(() {});
-                },
+            FlatButton(
+              textColor: Colors.white,
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => BillingPage(),
+                  ),
+                );
+                setState(() {});
+              },
               child: Text("استعلامات الفواتير",
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
@@ -93,6 +78,12 @@ class _GuidanceState extends State<Guidance> {
           ],
         ),
         body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/dalel-bg-01.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -114,17 +105,16 @@ class _GuidanceState extends State<Guidance> {
                 Card(
                     child: InkWell(
                   child: Text('الطابق الثالث'),
-                   onTap: () {
-                      Navigator.push<void>(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) => floor3(),
-                        ),
-                      );
-                      setState(() {});
-                    },
-                )
-                )
+                  onTap: () {
+                    Navigator.push<void>(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => floor3(),
+                      ),
+                    );
+                    setState(() {});
+                  },
+                ))
               ]),
         ),
       ),

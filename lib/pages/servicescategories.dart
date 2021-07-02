@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:myapp/pages/services.dart';
 import 'package:myapp/pages/subserv.dart';
 
 import 'billingpage.dart';
 import 'data.dart';
-import 'data2.dart';
+
 import 'guidance.dart';
 import 'homepage.dart';
 
@@ -28,6 +29,11 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          title: Text('قسم الخدمات',
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.rtl,
+              style: TextStyle(color: Colors.white, fontSize: 30)),
           elevation: 20.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -40,33 +46,17 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                 textDirection: TextDirection.rtl,
                 style: TextStyle(color: Colors.white, fontSize: 18)),
             onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => HomePage(),
-                  ),
-                );
-                setState(() {});
-              },
+              Navigator.push<void>(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => HomePage(),
+                ),
+              );
+              setState(() {});
+            },
           ),
           actions: [
-            // FlatButton(
-            //   textColor: Colors.white,
-            //   onPressed: () {
-            //     Navigator.push<void>(
-            //       context,
-            //       MaterialPageRoute<void>(
-            //         builder: (BuildContext context) => ServicesCategories(),
-            //       ),
-            //     );
-            //     setState(() {});
-            //   },
-            //   child: Text(
-            //     "الخدمات",
-            //     style: TextStyle(color: Colors.white, fontSize: 20),
-            //   ),
-            //   shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-            // ),
+            // ignore: deprecated_member_use
             FlatButton(
               textColor: Colors.white,
               onPressed: () {
@@ -76,12 +66,13 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                     builder: (BuildContext context) => Guidance(),
                   ),
                 );
-              setState(() {});
-            },
+                setState(() {});
+              },
               child: Text("الدليل",
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
             ),
+            // ignore: deprecated_member_use
             FlatButton(
               textColor: Colors.white,
               onPressed: () {
@@ -155,9 +146,7 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                                           context,
                                           MaterialPageRoute<void>(
                                             builder: (BuildContext context) =>
-                                                Subserv(
-                                                    servicesMenu[index].name,
-                                                    servicesMenu[index].id),
+                                                Subserv(servicesMenu[index].id),
                                           ),
                                         );
                                         setState(() {});
@@ -179,15 +168,3 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
     );
   }
 }
-
-//  IconButton(
-//                   icon: Icon(Icons.home),
-//                   onPressed: () {
-//                     Navigator.pop(
-//                         context,
-//                         MaterialPageRoute(
-//                           builder: (context) => HomePage(),
-//                         ));
-//                     setState(() {});
-//                   },
-//                 ),

@@ -30,5 +30,4 @@ class Subservices {
         createdAt: DateTime.parse(jsonSubServices["created_at"]),
         updatedAt: DateTime.parse(jsonSubServices["updated_at"]),
       );
-  void setServices(String servname) => this.name = servname;
 }

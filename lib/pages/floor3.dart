@@ -32,14 +32,14 @@ class _floor3State extends State<floor3> {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(color: Colors.white, fontSize: 18)),
                 onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => HomePage(),
-                  ),
-                );
-                setState(() {});
-              },
+                  Navigator.push<void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => HomePage(),
+                    ),
+                  );
+                  setState(() {});
+                },
               ),
               actions: [
                 FlatButton(
@@ -105,7 +105,7 @@ class _floor3State extends State<floor3> {
                         children: [
                           Padding(padding: EdgeInsets.all(5)),
                           Image.asset(
-                            "images/floorNo33.jpg",
+                            "images/f3.jpg",
                             width: 1350,
                             height: 600,
                           ),

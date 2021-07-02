@@ -20,78 +20,81 @@ class _floor3State extends State<floor4> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-        appBar: AppBar(
-          elevation: 20.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
-          ),
-          backgroundColor: Colors.indigo[800],
-          leading: TextButton(
-            child: Text('الصفحة الرئيسية',
-                textDirection: TextDirection.rtl,
-                style: TextStyle(color: Colors.white, fontSize: 18)),
-            onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => HomePage(),
-                  ),
-                );
-                setState(() {});
-              },
-          ),
-          actions: [
-            FlatButton(
-              textColor: Colors.white,
-              onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => ServicesCategories(),
-                  ),
-                );
-                setState(() {});
-              },
-              child: Text(
-                "الخدمات",
-                style: TextStyle(color: Colors.white, fontSize: 20),
+            appBar: AppBar(
+              elevation: 20.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(20),
+                ),
               ),
-              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-            ),
-            FlatButton(
-              textColor: Colors.white,
-              onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => Guidance(),
-                  ),
-                );
-                setState(() {});
-              },
-                child: Text("الدليل",
-                    style: TextStyle(color: Colors.white, fontSize: 20)),
-                shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-              ),
-              FlatButton(
-                textColor: Colors.white,
+              backgroundColor: Colors.indigo[800],
+              leading: TextButton(
+                child: Text('الصفحة الرئيسية',
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(color: Colors.white, fontSize: 18)),
                 onPressed: () {
                   Navigator.push<void>(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => BillingPage(),
+                      builder: (BuildContext context) => HomePage(),
                     ),
                   );
                   setState(() {});
                 },
-              child: Text("استعلامات الفواتير",
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
-              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+              ),
+              actions: [
+                FlatButton(
+                  textColor: Colors.white,
+                  onPressed: () {
+                    Navigator.push<void>(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => ServicesCategories(),
+                      ),
+                    );
+                    setState(() {});
+                  },
+                  child: Text(
+                    "الخدمات",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  shape:
+                      CircleBorder(side: BorderSide(color: Colors.transparent)),
+                ),
+                FlatButton(
+                  textColor: Colors.white,
+                  onPressed: () {
+                    Navigator.push<void>(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => Guidance(),
+                      ),
+                    );
+                    setState(() {});
+                  },
+                  child: Text("الدليل",
+                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                  shape:
+                      CircleBorder(side: BorderSide(color: Colors.transparent)),
+                ),
+                FlatButton(
+                  textColor: Colors.white,
+                  onPressed: () {
+                    Navigator.push<void>(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => BillingPage(),
+                      ),
+                    );
+                    setState(() {});
+                  },
+                  child: Text("استعلامات الفواتير",
+                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                  shape:
+                      CircleBorder(side: BorderSide(color: Colors.transparent)),
+                ),
+              ],
             ),
-          ],
-        ),
             backgroundColor: Colors.white,
             body: SizedBox(
                 width: 1500,
@@ -103,16 +106,12 @@ class _floor3State extends State<floor4> {
                         children: [
                           Padding(padding: EdgeInsets.all(5)),
                           Image.asset(
-                            "images/floorNo4.jpg",
+                            "images/f4.jpg",
                             width: 1350,
                             height: 600,
                           ),
                         ],
                       )
-                    ]
-                    )
-                    )
-                    )
-                    );
+                    ]))));
   }
 }
