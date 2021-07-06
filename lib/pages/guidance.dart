@@ -34,6 +34,7 @@ class _GuidanceState extends State<Guidance> {
           ),
           backgroundColor: Colors.indigo[800],
           actions: [
+            // ignore: deprecated_member_use
             FlatButton(
               textColor: Colors.white,
               onPressed: () {
@@ -86,67 +87,83 @@ class _GuidanceState extends State<Guidance> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/guidance-background.png"),
-              fit: BoxFit.cover,
+              image: AssetImage("images/dalel-bg-01-01.png"),
+              fit: BoxFit.fill,
             ),
           ),
-          child: SizedBox(
-            child: Container(
-              child: Column(
-                children: [
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
-                        title: Text(
-                          'الطابق الثالث',
-                          style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),
-                          textDirection: TextDirection.rtl,
-                        ),
-                        onTap: () {
-                          Navigator.push<void>(
-                            context,
-                            MaterialPageRoute<void>(
-                              builder: (BuildContext context) => floor3(),
-                            ),
-                          );
-                          setState(() {});
-                        },
-                      ),
+          height: (MediaQuery.of(context).size.height),
+          width: (MediaQuery.of(context).size.width),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                color: Colors.amber,
+                margin: EdgeInsets.only(right: 100),
+                child: Padding(
+                  padding: const EdgeInsets.all(40),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(16.0),
+                      primary: Colors.white,
+                      textStyle: const TextStyle(fontSize: 20),
                     ),
+                    //contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                    child: Text(
+                      'الطابق الثالث',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                      textDirection: TextDirection.rtl,
+                    ),
+                    onPressed: () {
+                      Navigator.push<void>(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => floor3(),
+                        ),
+                      );
+                      setState(() {});
+                    },
                   ),
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: ListTile(
-                        contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
-                        title: Text(
-                          'الطابق الرابع',
-                          style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),
-                          textDirection: TextDirection.rtl,
-                        ),
-                        onTap: () {
-                          Navigator.push<void>(
-                            context,
-                            MaterialPageRoute<void>(
-                              builder: (BuildContext context) => floor4(),
-                            ),
-                          );
-                          setState(() {});
-                        },
-                      ),
-                    ),
-                  )
-                ],
+                ),
               ),
-            ),
+              Container(
+                color: Colors.amber,
+                margin: EdgeInsets.only(right: 100),
+                child: Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(16.0),
+                      primary: Colors.white,
+                      textStyle: const TextStyle(fontSize: 20),
+                    ),
+                    // contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                    child: Text(
+                      'الطابق الرابع',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                      textDirection: TextDirection.rtl,
+                    ),
+                    onPressed: () {
+                      Navigator.push<void>(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => floor4(),
+                        ),
+                      );
+                      setState(() {});
+                    },
+                  ),
+                ),
+              )
+            ],
           ),
         ),
         bottomNavigationBar: BottomAppBar(

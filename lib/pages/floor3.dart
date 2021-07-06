@@ -114,19 +114,6 @@ class _floor3State extends State<floor3> {
                       ],
                     )
                   ])),
-          // bottomNavigationBar: BottomAppBar(
-          //   elevation: 20.0,
-          //   child: Text(
-          //     'شركة كهرباء الخليل',
-          //     style: TextStyle(
-          //         color: Colors.white,
-          //         fontSize: 30,
-          //         fontWeight: FontWeight.bold),
-          //     textDirection: TextDirection.rtl,
-          //     textAlign: TextAlign.center,
-          //   ),
-          //   color: Colors.indigo[800],
-          // ),
         ));
   }
 }
