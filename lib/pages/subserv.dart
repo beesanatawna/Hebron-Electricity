@@ -1,47 +1,31 @@
-import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:myapp/pages/Subservices.dart';
-import 'package:http/http.dart' as http;
 import 'package:myapp/pages/servicescategories.dart';
-
 import 'billingpage.dart';
-import 'data2.dart';
+
 import 'guidance.dart';
 import 'homepage.dart';
 
 class Subserv extends StatefulWidget {
-  final int dalelServiceId;
-  Subserv(this.dalelServiceId);
+  //final int dalelServiceId;
+  List<Subservices> subServices = [];
+  Subserv(this.subServices);
 
   @override
-  _SubservState createState() => _SubservState(dalelServiceId);
+  _SubservState createState() => _SubservState(subServices);
 }
 
 class _SubservState extends State<Subserv> {
-  int dalelServiceId;
-  _SubservState(this.dalelServiceId);
-
-  void fetchSubServices() async {
-    List<Subservices> subservices = [];
-    http.Response response = await http.get(Uri.parse(
-        'http://portal.hepco.ps:7654/api/dalel-service-cat?id=$dalelServiceId'));
-
-    if (response.statusCode == 200) {
-      var jsonArray = jsonDecode(response.body) as List;
-
-      for (int i = 0; i < jsonArray.length; i++) {
-        Subservices s = Subservices.fromJson(jsonArray[i]);
-        subservices.add(s);
-      }
-      subServices = subservices;
-    }
-  }
+  List<Subservices> subServices = [];
+  //int dalelServiceId;
+  _SubservState(this.subServices);
 
   @override
   void initState() {
     super.initState();
-    fetchSubServices();
+    //fetchSubServices();
   }
 
   @override
@@ -62,20 +46,6 @@ class _SubservState extends State<Subserv> {
             ),
           ),
           backgroundColor: Colors.indigo[800],
-          leading: TextButton(
-            child: Text('الصفحة الرئيسية',
-                textDirection: TextDirection.rtl,
-                style: TextStyle(color: Colors.white, fontSize: 18)),
-            onPressed: () {
-              Navigator.push<void>(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => HomePage(),
-                ),
-              );
-              setState(() {});
-            },
-          ),
           actions: [
             // ignore: deprecated_member_use
             FlatButton(
@@ -127,12 +97,27 @@ class _SubservState extends State<Subserv> {
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
             ),
+            FlatButton(
+              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+              child: Text('الصفحة الرئيسية',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => HomePage(),
+                  ),
+                );
+                setState(() {});
+              },
+            ),
           ],
         ),
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/bg.png"),
+              image: AssetImage("images/service-background-2.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -163,11 +148,6 @@ class _SubservState extends State<Subserv> {
                                       ),
                                     ),
                                     child: ListTile(
-                                      leading: Icon(
-                                        Icons.arrow_back,
-                                        color: Colors.white,
-                                        size: 30,
-                                      ),
                                       contentPadding:
                                           EdgeInsets.fromLTRB(7, 5, 7, 5),
                                       title: Text(
@@ -180,7 +160,50 @@ class _SubservState extends State<Subserv> {
                                         textDirection: TextDirection.rtl,
                                         textAlign: TextAlign.center,
                                       ),
-                                      onTap: () {},
+                                      onTap: () {
+                                        showDialog(
+                                            useSafeArea: true,
+                                            barrierDismissible: true,
+                                            context: context,
+                                            builder: (_) => new AlertDialog(
+                                                  scrollable: true,
+                                                  backgroundColor:
+                                                      Colors.blueGrey[50],
+                                                  shape: RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 5,
+                                                          color: Colors.indigo
+                                                              .shade800)),
+                                                  title: new Text(
+                                                    "وصف الخدمة",
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        fontSize: 30,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                    textDirection:
+                                                        TextDirection.rtl,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  content: Html(
+                                                    data:
+                                                        subServices[index].desc,
+                                                    style: {
+                                                      'p': Style(
+                                                        color: Colors.black87,
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    },
+                                                  ),
+                                                ));
+                                      },
                                     ),
                                   ),
                                 ),
@@ -194,25 +217,18 @@ class _SubservState extends State<Subserv> {
             ),
           ),
         ),
+        bottomNavigationBar: BottomAppBar(
+          elevation: 20.0,
+          child: Text(
+            'شركة كهرباء الخليل',
+            style: TextStyle(
+                color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.center,
+          ),
+          color: Colors.indigo[800],
+        ),
       ),
     );
   }
-  // showMaterialDialog() {
-  //   showDialog(
-  //       context: context,
-  //       barrierDismissible: true,
-  //       // set to false if you want to force a rating
-  //       builder: (context) {
-  //         return DescriptiongDialog(
-  //           icon: const Icon(Icons.star, size: 100, color: Colors.deepOrange),
-  //           // set your own image/icon widget
-  //           title: subServices.name,
-  //           description: "Tap a star to set your rating",
-  //           submitButton: "Close",
-  //           accentColor: Colors.orangeAccent,
-  //           // optional
-
-  //         );
-  //       });
-  // }
 }

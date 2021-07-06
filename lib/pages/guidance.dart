@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/floor3.dart';
-import 'package:myapp/pages/homepage.dart';
-import 'package:myapp/pages/servicescategories.dart';
+import 'package:myapp/pages/floor4.dart';
 
 import 'billingpage.dart';
-import 'floor4.dart';
+import 'floor3.dart';
+import 'homepage.dart';
+import 'servicescategories.dart';
 
 class Guidance extends StatefulWidget {
   const Guidance({Key? key}) : super(key: key);
@@ -21,6 +21,11 @@ class _GuidanceState extends State<Guidance> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          title: Text(
+            'دليل الطوابق',
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+          centerTitle: true,
           elevation: 20.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -28,20 +33,6 @@ class _GuidanceState extends State<Guidance> {
             ),
           ),
           backgroundColor: Colors.indigo[800],
-          leading: TextButton(
-            child: Text('الصفحة الرئيسية',
-                textDirection: TextDirection.rtl,
-                style: TextStyle(color: Colors.white, fontSize: 18)),
-            onPressed: () {
-              Navigator.push<void>(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => HomePage(),
-                ),
-              );
-              setState(() {});
-            },
-          ),
           actions: [
             FlatButton(
               textColor: Colors.white,
@@ -75,64 +66,101 @@ class _GuidanceState extends State<Guidance> {
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
             ),
+            FlatButton(
+              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+              child: Text('الصفحة الرئيسية',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => HomePage(),
+                  ),
+                );
+                setState(() {});
+              },
+            ),
           ],
         ),
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/dalel-bg-01.jpg"),
+              image: AssetImage("images/guidance-background.png"),
               fit: BoxFit.cover,
             ),
           ),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Card(
-                  child: InkWell(
-                    child: Text(' الطابق الرابع'),
-                    onTap: () {
-                      Navigator.push<void>(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) => floor4(),
+          child: SizedBox(
+            child: Container(
+              child: Column(
+                children: [
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                        title: Text(
+                          'الطابق الثالث',
+                          style: TextStyle(
+                              fontStyle: FontStyle.normal,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),
+                          textDirection: TextDirection.rtl,
                         ),
-                      );
-                      setState(() {});
-                    },
-                  ),
-                ),
-                Card(
-                    child: InkWell(
-                  child: Text('الطابق الثالث'),
-                  onTap: () {
-                    Navigator.push<void>(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => floor3(),
+                        onTap: () {
+                          Navigator.push<void>(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) => floor3(),
+                            ),
+                          );
+                          setState(() {});
+                        },
                       ),
-                    );
-                    setState(() {});
-                  },
-                ))
-              ]),
+                    ),
+                  ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                        title: Text(
+                          'الطابق الرابع',
+                          style: TextStyle(
+                              fontStyle: FontStyle.normal,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),
+                          textDirection: TextDirection.rtl,
+                        ),
+                        onTap: () {
+                          Navigator.push<void>(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) => floor4(),
+                            ),
+                          );
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          elevation: 20.0,
+          child: Text(
+            'شركة كهرباء الخليل',
+            style: TextStyle(
+                color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.center,
+          ),
+          color: Colors.indigo[800],
         ),
       ),
     );
-
-    // return Container(
-    //     child: Text'),
-    // TextButton(
-    // onPressed: () {
-    //   Navigator.pop(
-    //     context,
-    //     MaterialPageRoute(
-    //       builder: (context) => HomePage(),
-    //     ),
-    //   );
-    // },
-    // child: Text("NAVIGATE")
-    // )
-    // );
   }
 }

@@ -17,10 +17,14 @@ class _BillingPageState extends State<BillingPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'home page',
         home: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            centerTitle: true,
+            title: Text('قسم الفوترة',
+                textAlign: TextAlign.center,
+                textDirection: TextDirection.rtl,
+                style: TextStyle(color: Colors.white, fontSize: 30)),
             elevation: 20.0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
@@ -28,23 +32,11 @@ class _BillingPageState extends State<BillingPage> {
               ),
             ),
             backgroundColor: Colors.indigo[800],
-            leading: TextButton(
-              child: Text('الصفحة الرئيسية',
-                  textDirection: TextDirection.rtl,
-                  style: TextStyle(color: Colors.white, fontSize: 18)),
-              onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => HomePage(),
-                  ),
-                );
-                setState(() {});
-              },
-            ),
             actions: [
+              // ignore: deprecated_member_use
               FlatButton(
-                textColor: Colors.white,
+                shape:
+                    CircleBorder(side: BorderSide(color: Colors.transparent)),
                 onPressed: () {
                   Navigator.push<void>(
                     context,
@@ -58,11 +50,10 @@ class _BillingPageState extends State<BillingPage> {
                   "الخدمات",
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
-                shape:
-                    CircleBorder(side: BorderSide(color: Colors.transparent)),
               ),
               FlatButton(
-                textColor: Colors.white,
+                shape:
+                    CircleBorder(side: BorderSide(color: Colors.transparent)),
                 onPressed: () {
                   Navigator.push<void>(
                     context,
@@ -74,8 +65,21 @@ class _BillingPageState extends State<BillingPage> {
                 },
                 child: Text("الدليل",
                     style: TextStyle(color: Colors.white, fontSize: 20)),
+              ),
+              FlatButton(
                 shape:
                     CircleBorder(side: BorderSide(color: Colors.transparent)),
+                onPressed: () {
+                  Navigator.push<void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => HomePage(),
+                    ),
+                  );
+                  setState(() {});
+                },
+                child: Text("الصفحة الرئيسية",
+                    style: TextStyle(color: Colors.white, fontSize: 20)),
               ),
             ],
           ),
@@ -232,6 +236,19 @@ class _BillingPageState extends State<BillingPage> {
                 ),
               ),
             ],
+          ),
+          bottomNavigationBar: BottomAppBar(
+            elevation: 20.0,
+            child: Text(
+              'شركة كهرباء الخليل',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.center,
+            ),
+            color: Colors.indigo[800],
           ),
         ));
   }
