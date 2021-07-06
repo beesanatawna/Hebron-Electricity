@@ -110,7 +110,7 @@ class _GuidanceState extends State<Guidance> {
                     ),
                     //contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
                     child: Text(
-                      'الطابق الثالث',
+                      'الطابق الرابع',
                       style: TextStyle(
                           color: Colors.black,
                           fontStyle: FontStyle.normal,
@@ -122,7 +122,7 @@ class _GuidanceState extends State<Guidance> {
                       Navigator.push<void>(
                         context,
                         MaterialPageRoute<void>(
-                          builder: (BuildContext context) => floor3(),
+                          builder: (BuildContext context) => floor4(),
                         ),
                       );
                       setState(() {});
@@ -143,7 +143,7 @@ class _GuidanceState extends State<Guidance> {
                     ),
                     // contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
                     child: Text(
-                      'الطابق الرابع',
+                      'الطابق الثالث ',
                       style: TextStyle(
                           color: Colors.black,
                           fontStyle: FontStyle.normal,
@@ -155,7 +155,7 @@ class _GuidanceState extends State<Guidance> {
                       Navigator.push<void>(
                         context,
                         MaterialPageRoute<void>(
-                          builder: (BuildContext context) => floor4(),
+                          builder: (BuildContext context) => floor3(),
                         ),
                       );
                       setState(() {});
