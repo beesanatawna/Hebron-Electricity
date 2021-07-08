@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/floor4.dart';
-
-import 'billingpage.dart';
+import '2ndproj/firstpage.dart';
 import 'floor3.dart';
 import 'homepage.dart';
 import 'servicescategories.dart';
@@ -58,7 +57,9 @@ class _GuidanceState extends State<Guidance> {
                 Navigator.push<void>(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => BillingPage(),
+                    builder: (BuildContext context) => Servicespage(
+                      title: 'الخدمات',
+                    ),
                   ),
                 );
                 setState(() {});

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:myapp/pages/Subservices.dart';
 import 'package:myapp/pages/servicescategories.dart';
-import 'billingpage.dart';
-
+import '2ndproj/firstpage.dart';
 import 'guidance.dart';
 import 'homepage.dart';
 
@@ -88,7 +87,9 @@ class _SubservState extends State<Subserv> {
                 Navigator.push<void>(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => BillingPage(),
+                    builder: (BuildContext context) => Servicespage(
+                      title: 'الخدمات',
+                    ),
                   ),
                 );
                 setState(() {});
@@ -117,7 +118,7 @@ class _SubservState extends State<Subserv> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/service-background-2.png"),
+              image: AssetImage("images/test-01.png"),
               fit: BoxFit.cover,
             ),
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/floor3.dart';
 import 'package:myapp/pages/servicescategories.dart';
-
-import 'billingpage.dart';
+import '2ndproj/firstpage.dart';
 import 'guidance.dart';
 import 'homepage.dart';
 
@@ -29,6 +29,24 @@ class _floor3State extends State<floor4> {
             ),
             backgroundColor: Colors.indigo[800],
             actions: [
+              FlatButton(
+                textColor: Colors.white,
+                onPressed: () {
+                  Navigator.push<void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => floor3(),
+                    ),
+                  );
+                  setState(() {});
+                },
+                child: Text(
+                  "الطابق الثالث",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                shape:
+                    CircleBorder(side: BorderSide(color: Colors.transparent)),
+              ),
               FlatButton(
                 textColor: Colors.white,
                 onPressed: () {
@@ -69,7 +87,9 @@ class _floor3State extends State<floor4> {
                   Navigator.push<void>(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => BillingPage(),
+                      builder: (BuildContext context) => Servicespage(
+                        title: 'الخدمات',
+                      ),
                     ),
                   );
                   setState(() {});
@@ -115,19 +135,6 @@ class _floor3State extends State<floor4> {
                       ],
                     )
                   ])),
-          // bottomNavigationBar: BottomAppBar(
-          //   elevation: 20.0,
-          //   child: Text(
-          //     'شركة كهرباء الخليل',
-          //     style: TextStyle(
-          //         color: Colors.white,
-          //         fontSize: 30,
-          //         fontWeight: FontWeight.bold),
-          //     textDirection: TextDirection.rtl,
-          //     textAlign: TextAlign.center,
-          //   ),
-          //   color: Colors.indigo[800],
-          // ),
         ));
   }
 }

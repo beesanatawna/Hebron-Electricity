@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/floor4.dart';
 import 'package:myapp/pages/servicescategories.dart';
-import 'billingpage.dart';
+import '2ndproj/firstpage.dart';
 import 'guidance.dart';
 import 'homepage.dart';
 
@@ -27,7 +28,27 @@ class _floor3State extends State<floor3> {
               ),
             ),
             backgroundColor: Colors.indigo[800],
+            // ignore: deprecated_member_use
+
             actions: [
+              FlatButton(
+                textColor: Colors.white,
+                onPressed: () {
+                  Navigator.push<void>(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => floor4(),
+                    ),
+                  );
+                  setState(() {});
+                },
+                child: Text(
+                  "الطابق الرابع",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                shape:
+                    CircleBorder(side: BorderSide(color: Colors.transparent)),
+              ),
               FlatButton(
                 textColor: Colors.white,
                 onPressed: () {
@@ -68,7 +89,9 @@ class _floor3State extends State<floor3> {
                   Navigator.push<void>(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => BillingPage(),
+                      builder: (BuildContext context) => Servicespage(
+                        title: 'الخدمات',
+                      ),
                     ),
                   );
                   setState(() {});
