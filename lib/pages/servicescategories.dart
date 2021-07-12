@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:myapp/pages/guidance.dart';
 import 'package:myapp/pages/services.dart';
 import 'package:myapp/pages/subserv.dart';
 import '2ndproj/firstpage.dart';
 import 'Subservices.dart';
 import 'data.dart';
+import 'data2.dart';
 import 'guidance.dart';
 import 'homepage.dart';
 
@@ -28,12 +30,29 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        floatingActionButton: Container(
+          height: 150,
+          width: 150,
+          child: FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            label: const Text(
+              'الرجوع',
+              textDirection: TextDirection.rtl,
+              style: TextStyle(color: Colors.white, fontSize: 30),
+            ),
+            backgroundColor: Colors.indigo,
+          ),
+        ),
         appBar: AppBar(
+          //leadingWidth: 50,
+          toolbarHeight: 90,
           centerTitle: true,
           title: Text('قسم الخدمات',
               textAlign: TextAlign.center,
               textDirection: TextDirection.rtl,
-              style: TextStyle(color: Colors.white, fontSize: 30)),
+              style: TextStyle(color: Colors.white, fontSize: 45)),
           elevation: 20.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -41,9 +60,19 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
             ),
           ),
           backgroundColor: Colors.indigo[800],
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              size: 40,
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
           actions: [
             // ignore: deprecated_member_use
             FlatButton(
+              // padding: EdgeInsets.all(4),
               textColor: Colors.white,
               onPressed: () {
                 Navigator.push<void>(
@@ -55,11 +84,12 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                 setState(() {});
               },
               child: Text("الدليل",
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
             ),
             // ignore: deprecated_member_use
             FlatButton(
+              // padding: EdgeInsets.all(4),
               textColor: Colors.white,
               onPressed: () {
                 Navigator.push<void>(
@@ -73,15 +103,16 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                 setState(() {});
               },
               child: Text("استعلامات الفواتير",
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
             ),
             // ignore: deprecated_member_use
             FlatButton(
+              // padding: EdgeInsets.all(4),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
               child: Text('الصفحة الرئيسية',
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
               onPressed: () {
                 Navigator.push<void>(
                   context,
@@ -97,7 +128,7 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/test-01.png"),
+              image: AssetImage("images/bg-dalel-01.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -116,8 +147,8 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                               return Column(
                                 children: [
                                   Container(
-                                    height: 80,
-                                    width: 450,
+                                    height: 100,
+                                    width: 500,
                                     child: Card(
                                       color: Colors.indigo[800],
                                       shape: RoundedRectangleBorder(
@@ -128,55 +159,148 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                                           Radius.circular(5),
                                         ),
                                       ),
-                                      child: ListTile(
-                                        leading: Icon(
-                                          Icons.arrow_back,
-                                          color: Colors.white,
-                                          size: 30,
-                                        ),
-                                        contentPadding:
-                                            EdgeInsets.fromLTRB(7, 5, 7, 5),
-                                        title: Text(
-                                          servicesMenu[index].name,
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 30,
-                                              fontWeight: FontWeight.bold),
-                                          textDirection: TextDirection.rtl,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        onTap: () async {
-                                          List<Subservices> subservices = [];
-                                          String number =
-                                              servicesMenu[index].id.toString();
-                                          http.Response response =
-                                              await http.get(Uri.parse(
-                                                  'http://portal.hepco.ps:7654/api/dalel-service-cat?id=$number'));
-
-                                          if (response.statusCode == 200) {
-                                            var jsonArray =
-                                                jsonDecode(response.body)
-                                                    as List;
-                                            for (int i = 0;
-                                                i < jsonArray.length;
-                                                i++) {
-                                              Subservices s =
-                                                  Subservices.fromJson(
-                                                      jsonArray[i]);
-                                              subservices.add(s);
-                                            }
-                                          }
-
-                                          Navigator.push<void>(
-                                            context,
-                                            MaterialPageRoute<void>(
-                                              builder: (BuildContext context) =>
-                                                  Subserv(subservices),
+                                      child: Center(
+                                        child: ListTile(
+                                            leading: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.arrow_back,
+                                                  color: Colors.white,
+                                                  size: 30,
+                                                ),
+                                              ],
                                             ),
-                                          );
-                                          setState(() {});
-                                        },
+                                            contentPadding:
+                                                EdgeInsets.fromLTRB(7, 5, 7, 5),
+                                            title: Center(
+                                              child: Text(
+                                                servicesMenu[index].name,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontSize: 30,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                textDirection:
+                                                    TextDirection.rtl,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                            onTap: () async {
+                                              List<Subservices> subservices =
+                                                  [];
+                                              String number =
+                                                  servicesMenu[index]
+                                                      .id
+                                                      .toString();
+                                              http.Response response =
+                                                  await http.get(Uri.parse(
+                                                      'http://portal.hepco.ps:7654/api/dalel-service-cat?id=$number'));
+
+                                              if (response.statusCode == 200) {
+                                                var jsonArray =
+                                                    jsonDecode(response.body)
+                                                        as List;
+                                                for (int i = 0;
+                                                    i < jsonArray.length;
+                                                    i++) {
+                                                  Subservices s =
+                                                      Subservices.fromJson(
+                                                          jsonArray[i]);
+                                                  subservices.add(s);
+                                                }
+                                              }
+                                              if (subservices.length != 0) {
+                                                Navigator.push<void>(
+                                                  context,
+                                                  MaterialPageRoute<void>(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        Subserv(subservices),
+                                                  ),
+                                                );
+                                              } else {
+                                                showDialog<String>(
+                                                  // useSafeArea: true,
+
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          AlertDialog(
+                                                    scrollable: true,
+                                                    backgroundColor:
+                                                        Colors.blueGrey[50],
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                                width: 5,
+                                                                color: Colors
+                                                                    .indigo
+                                                                    .shade800)),
+                                                    title: new Text(
+                                                      "وصف الخدمة",
+                                                      style: TextStyle(
+                                                          color: Colors.indigo,
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                          fontSize: 30,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textDirection:
+                                                          TextDirection.rtl,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    ),
+                                                    content: Text(
+                                                      mainServices[index].desc,
+                                                      style: TextStyle(
+                                                          color: Colors
+                                                              .indigo[800],
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                      textDirection:
+                                                          TextDirection.rtl,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    ),
+                                                    actions: <Widget>[
+                                                      Center(
+                                                        child: TextButton(
+                                                          autofocus: true,
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  context,
+                                                                  'اغلاق'),
+                                                          child: const Text(
+                                                            'اغلاق',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .indigo,
+                                                                fontStyle:
+                                                                    FontStyle
+                                                                        .normal,
+                                                                fontSize: 30,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                            textDirection:
+                                                                TextDirection
+                                                                    .rtl,
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              }
+                                            }),
                                       ),
                                     ),
                                   ),

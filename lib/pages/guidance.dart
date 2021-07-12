@@ -32,6 +32,12 @@ class _GuidanceState extends State<Guidance> {
             ),
           ),
           backgroundColor: Colors.indigo[800],
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
           actions: [
             // ignore: deprecated_member_use
             FlatButton(
@@ -94,77 +100,79 @@ class _GuidanceState extends State<Guidance> {
           ),
           height: (MediaQuery.of(context).size.height),
           width: (MediaQuery.of(context).size.width),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                color: Colors.amber,
-                margin: EdgeInsets.only(right: 100),
-                child: Padding(
-                  padding: const EdgeInsets.all(40),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.all(16.0),
-                      primary: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  color: Colors.amber,
+                  margin: EdgeInsets.only(right: 100),
+                  child: Padding(
+                    padding: const EdgeInsets.all(40),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.all(16.0),
+                        primary: Colors.white,
+                        textStyle: const TextStyle(fontSize: 20),
+                      ),
+                      //contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                      child: Text(
+                        'الطابق الرابع',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                        textDirection: TextDirection.rtl,
+                      ),
+                      onPressed: () {
+                        Navigator.push<void>(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => floor4(),
+                          ),
+                        );
+                        setState(() {});
+                      },
                     ),
-                    //contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
-                    child: Text(
-                      'الطابق الرابع',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      textDirection: TextDirection.rtl,
-                    ),
-                    onPressed: () {
-                      Navigator.push<void>(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) => floor4(),
-                        ),
-                      );
-                      setState(() {});
-                    },
                   ),
                 ),
-              ),
-              Container(
-                color: Colors.amber,
-                margin: EdgeInsets.only(right: 100),
-                child: Padding(
-                  padding: const EdgeInsets.all(40.0),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.all(16.0),
-                      primary: Colors.white,
-                      textStyle: const TextStyle(fontSize: 20),
+                Container(
+                  color: Colors.amber,
+                  margin: EdgeInsets.only(right: 100),
+                  child: Padding(
+                    padding: const EdgeInsets.all(40.0),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.all(16.0),
+                        primary: Colors.white,
+                        textStyle: const TextStyle(fontSize: 20),
+                      ),
+                      // contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+                      child: Text(
+                        'الطابق الثالث ',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                        textDirection: TextDirection.rtl,
+                      ),
+                      onPressed: () {
+                        Navigator.push<void>(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => floor3(),
+                          ),
+                        );
+                        setState(() {});
+                      },
                     ),
-                    // contentPadding: EdgeInsets.fromLTRB(7, 5, 7, 5),
-                    child: Text(
-                      'الطابق الثالث ',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      textDirection: TextDirection.rtl,
-                    ),
-                    onPressed: () {
-                      Navigator.push<void>(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) => floor3(),
-                        ),
-                      );
-                      setState(() {});
-                    },
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: BottomAppBar(

@@ -45,6 +45,12 @@ class _SubservState extends State<Subserv> {
             ),
           ),
           backgroundColor: Colors.indigo[800],
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
           actions: [
             // ignore: deprecated_member_use
             FlatButton(
@@ -118,7 +124,7 @@ class _SubservState extends State<Subserv> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/test-01.png"),
+              image: AssetImage("images/bg-dalel-01.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -136,8 +142,8 @@ class _SubservState extends State<Subserv> {
                             return Column(
                               children: [
                                 Container(
-                                  height: 80,
-                                  width: 450,
+                                  height: 100,
+                                  width: 500,
                                   child: Card(
                                     color: Colors.indigo[800],
                                     shape: RoundedRectangleBorder(
@@ -162,21 +168,50 @@ class _SubservState extends State<Subserv> {
                                         textAlign: TextAlign.center,
                                       ),
                                       onTap: () {
-                                        showDialog(
-                                            useSafeArea: true,
-                                            barrierDismissible: true,
-                                            context: context,
-                                            builder: (_) => new AlertDialog(
-                                                  scrollable: true,
-                                                  backgroundColor:
-                                                      Colors.blueGrey[50],
-                                                  shape: RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          width: 5,
-                                                          color: Colors.indigo
-                                                              .shade800)),
-                                                  title: new Text(
-                                                    "وصف الخدمة",
+                                        showDialog<String>(
+                                          // useSafeArea: true,
+
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            scrollable: true,
+                                            backgroundColor:
+                                                Colors.blueGrey[50],
+                                            shape: RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    width: 5,
+                                                    color: Colors
+                                                        .indigo.shade800)),
+                                            title: new Text(
+                                              "وصف الخدمة",
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold),
+                                              textDirection: TextDirection.rtl,
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            content: Html(
+                                              data: subServices[index].desc,
+                                              style: {
+                                                'p': Style(
+                                                  color: Colors.black87,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.bold,
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              },
+                                            ),
+                                            actions: <Widget>[
+                                              Center(
+                                                child: TextButton(
+                                                  autofocus: true,
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          context, 'اغلاق'),
+                                                  child: const Text(
+                                                    'اغلاق',
                                                     style: TextStyle(
                                                         color: Colors.black,
                                                         fontStyle:
@@ -188,22 +223,11 @@ class _SubservState extends State<Subserv> {
                                                         TextDirection.rtl,
                                                     textAlign: TextAlign.center,
                                                   ),
-                                                  content: Html(
-                                                    data:
-                                                        subServices[index].desc,
-                                                    style: {
-                                                      'p': Style(
-                                                        color: Colors.black87,
-                                                        fontStyle:
-                                                            FontStyle.normal,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                      ),
-                                                    },
-                                                  ),
-                                                ));
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
                                       },
                                     ),
                                   ),

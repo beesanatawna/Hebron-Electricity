@@ -39,179 +39,233 @@ class _HomePageState extends State<HomePage> {
         //title: 'home page',
         home: Scaffold(
           backgroundColor: Colors.white,
-          body: Column(
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Padding(padding: EdgeInsets.all(2)),
-                Image.asset(
-                  "images/logo2.png",
-                  width: 300,
-                  height: 300,
-                )
-              ]),
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(20, 40, 30, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Container(
-                            color: Colors.blue[100],
-                            height: 200,
-                            width: 210,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 70, 90),
-                                  child: IconButton(
-                                      // iconSize: 30,
-                                      onPressed: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute<void>(
-                                            builder: (BuildContext context) =>
-                                                ServicesCategories(),
-                                          ),
-                                        );
-                                      },
-                                      icon: Icon(
-                                        Icons.miscellaneous_services_rounded,
-                                        size: 100,
-                                      )),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute<void>(
-                                        builder: (BuildContext context) =>
-                                            ServicesCategories(),
-                                      ),
-                                    );
-                                  },
-                                  child: Text(
-                                    'الخدمات',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold),
-                                    textDirection: TextDirection.rtl,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Container(
-                            color: Colors.green[100],
-                            height: 200,
-                            width: 210,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 70, 90),
-                                  child: IconButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute<void>(
-                                            builder: (BuildContext context) =>
-                                                Guidance(),
-                                          ),
-                                        );
-                                      },
-                                      icon: Icon(
-                                        Icons.location_on_outlined,
-                                        size: 100,
-                                      )),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute<void>(
-                                          builder: (BuildContext context) =>
-                                              Guidance(),
-                                        ),
-                                      );
-                                    },
-                                    child: Text(
-                                      "الدليل ",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold),
-                                    ))
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Container(
-                            color: Colors.red[300],
-                            height: 200,
-                            width: 210,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 70, 90),
-                                  child: IconButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute<void>(
-                                            builder: (BuildContext context) =>
-                                                Servicespage(
-                                              title: 'الخدمات',
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      icon: Icon(
-                                        Icons.query_stats_sharp,
-                                        size: 100,
-                                      )),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute<void>(
-                                          builder: (BuildContext context) =>
-                                              Servicespage(
-                                            title: 'الخدمات',
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                    child: Text(
-                                      "استعلامات الفواتير ",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                      textDirection: TextDirection.rtl,
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+          body: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/test-01.png"),
+                fit: BoxFit.cover,
               ),
-            ],
+            ),
+            child: Column(
+              children: [
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Padding(padding: EdgeInsets.all(2)),
+                  Image.asset(
+                    "images/logo2.png",
+                    width: 500,
+                    height: 500,
+                  )
+                ]),
+                Column(
+                  children: [
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(20, 40, 30, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute<void>(
+                                    builder: (BuildContext context) =>
+                                        ServicesCategories(),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(20.0),
+                                child: Container(
+                                  color: Colors.blue[100],
+                                  height: 300,
+                                  width: 310,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 90, 120),
+                                        child: IconButton(
+                                            // iconSize: 30,
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute<void>(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          ServicesCategories(),
+                                                ),
+                                              );
+                                            },
+                                            icon: Icon(
+                                              Icons
+                                                  .miscellaneous_services_rounded,
+                                              size: 150,
+                                            )),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute<void>(
+                                              builder: (BuildContext context) =>
+                                                  ServicesCategories(),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          'الخدمات',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 60,
+                                              fontWeight: FontWeight.bold),
+                                          textDirection: TextDirection.rtl,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute<void>(
+                                    builder: (BuildContext context) =>
+                                        Guidance(),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(20.0),
+                                child: Container(
+                                  color: Colors.green[100],
+                                  height: 300,
+                                  width: 310,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 90, 120),
+                                        child: IconButton(
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute<void>(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          Guidance(),
+                                                ),
+                                              );
+                                            },
+                                            icon: Icon(
+                                              Icons.location_on_outlined,
+                                              size: 140,
+                                            )),
+                                      ),
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute<void>(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Guidance(),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            "الدليل ",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontStyle: FontStyle.normal,
+                                                fontSize: 60,
+                                                fontWeight: FontWeight.bold),
+                                          ))
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute<void>(
+                                    builder: (BuildContext context) =>
+                                        Servicespage(
+                                      title: 'الخدمات',
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(20.0),
+                                child: Container(
+                                  color: Colors.red[300],
+                                  height: 300,
+                                  width: 310,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 90, 120),
+                                        child: IconButton(
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute<void>(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          Servicespage(
+                                                    title: 'الخدمات',
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            icon: Icon(
+                                              Icons.query_stats_sharp,
+                                              size: 150,
+                                            )),
+                                      ),
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute<void>(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Servicespage(
+                                                  title: 'الخدمات',
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            "استعلام الفواتير ",
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 50,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                            textDirection: TextDirection.rtl,
+                                          )),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ));
   }
