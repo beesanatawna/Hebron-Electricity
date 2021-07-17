@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/services.dart';
-import 'package:myapp/pages/servicescategories.dart';
+import 'package:myapp/services.dart';
+import 'package:myapp/servicescategories.dart';
 import 'package:http/http.dart' as http;
 import '2ndproj/firstpage.dart';
 import 'data.dart';
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/test-01.png"),
+                image: AssetImage("images/bg-final-01.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -194,9 +194,7 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.of(context).push(
                                   MaterialPageRoute<void>(
                                     builder: (BuildContext context) =>
-                                        Servicespage(
-                                      title: 'الخدمات',
-                                    ),
+                                        Servicespage(),
                                   ),
                                 );
                               },
@@ -220,9 +218,7 @@ class _HomePageState extends State<HomePage> {
                                                 MaterialPageRoute<void>(
                                                   builder:
                                                       (BuildContext context) =>
-                                                          Servicespage(
-                                                    title: 'الخدمات',
-                                                  ),
+                                                          Servicespage(),
                                                 ),
                                               );
                                             },
@@ -237,14 +233,12 @@ class _HomePageState extends State<HomePage> {
                                               MaterialPageRoute<void>(
                                                 builder:
                                                     (BuildContext context) =>
-                                                        Servicespage(
-                                                  title: 'الخدمات',
-                                                ),
+                                                        Servicespage(),
                                               ),
                                             );
                                           },
                                           child: Text(
-                                            "استعلام الفواتير ",
+                                            " الفواتير ",
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontStyle: FontStyle.normal,

@@ -32,8 +32,8 @@ class Instinfo {
   int feeTimes;
   String feeValue;
   int calTimes;
-  String lastSellId;
-  int lastFeeTimes;
+  var lastSellId;
+  var lastFeeTimes;
   String wayOfDeduct;
   StartDate startDate;
 
@@ -45,8 +45,8 @@ class Instinfo {
         feeTimes: json["FeeTimes"],
         feeValue: json["FeeValue"],
         calTimes: json["CalTimes"],
-        lastSellId: json["LastSellID"],
-        lastFeeTimes: json["LastFeeTimes"],
+        lastSellId: json["LastSellID"] ?? '',
+        lastFeeTimes: json["LastFeeTimes"] ?? 0,
         wayOfDeduct: json["WayOfDeduct"],
         startDate: StartDate.fromJson(json["StartDate"]),
       );
@@ -59,7 +59,7 @@ class Instinfo {
         "FeeTimes": feeTimes,
         "FeeValue": feeValue,
         "CalTimes": calTimes,
-        "LastSellID": lastSellId,
+        "LastSellID": lastSellId.toString(),
         "LastFeeTimes": lastFeeTimes,
         "WayOfDeduct": wayOfDeduct,
         "StartDate": startDate.toJson(),

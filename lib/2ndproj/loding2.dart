@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:myapp/pages/2ndproj/payinfo.dart';
+import 'package:myapp/2ndproj/payinfo.dart';
 
+import 'Personinfo.dart';
 import 'latest payments.dart';
+import 'mainPage.dart';
 
-// ignore: must_be_immutable
 class Loadingpay extends StatefulWidget {
   String agreementId;
   String name;

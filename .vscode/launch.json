@@ -8,13 +8,13 @@
             "name": "Dart",
             "type": "dart",
             "request": "launch",
-            "program": "lib/pages/main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "Training",
             "request": "launch",
             "type": "dart",
-            "program": "lib/pages/main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "Training (profile mode)",

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
 import 'installment.dart';
 import 'instinfo.dart';
 
@@ -30,8 +29,6 @@ class _LoadingInstState extends State<LoadingInst> {
       clintInfo =
           jsonArray.map((element) => Instinfo.fromJson(element)).toList();
 
-      print("kldsfhdskjlfhd");
-      print(clintInfo);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute<void>(
           builder: (BuildContext context) =>

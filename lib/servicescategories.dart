@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:myapp/pages/guidance.dart';
-import 'package:myapp/pages/services.dart';
-import 'package:myapp/pages/subserv.dart';
+import 'package:myapp/guidance.dart';
+import 'package:myapp/services.dart';
+import 'package:myapp/subserv.dart';
 import '2ndproj/firstpage.dart';
 import 'Subservices.dart';
 import 'data.dart';
-import 'data2.dart';
 import 'guidance.dart';
 import 'homepage.dart';
 
@@ -42,7 +41,7 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
               textDirection: TextDirection.rtl,
               style: TextStyle(color: Colors.white, fontSize: 30),
             ),
-            backgroundColor: Colors.indigo,
+            backgroundColor: Colors.orangeAccent,
           ),
         ),
         appBar: AppBar(
@@ -60,15 +59,7 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
             ),
           ),
           backgroundColor: Colors.indigo[800],
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              size: 40,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
+
           actions: [
             // ignore: deprecated_member_use
             FlatButton(
@@ -95,14 +86,12 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                 Navigator.push<void>(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => Servicespage(
-                      title: 'الخدمات',
-                    ),
+                    builder: (BuildContext context) => Servicespage(),
                   ),
                 );
                 setState(() {});
               },
-              child: Text("استعلامات الفواتير",
+              child: Text(" الفواتير",
                   style: TextStyle(color: Colors.white, fontSize: 30)),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
             ),
@@ -110,7 +99,7 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
             FlatButton(
               // padding: EdgeInsets.all(4),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
-              child: Text('الصفحة الرئيسية',
+              child: Text('الرئيسية',
                   textDirection: TextDirection.rtl,
                   style: TextStyle(color: Colors.white, fontSize: 30)),
               onPressed: () {
@@ -218,7 +207,10 @@ class _ServicesCategoriesState extends State<ServicesCategories> {
                                                   MaterialPageRoute<void>(
                                                     builder: (BuildContext
                                                             context) =>
-                                                        Subserv(subservices),
+                                                        Subserv(
+                                                            subservices,
+                                                            subservices[index]
+                                                                .name),
                                                   ),
                                                 );
                                               } else {

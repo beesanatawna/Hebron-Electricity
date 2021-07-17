@@ -1,41 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/floor4.dart';
-import 'package:myapp/pages/servicescategories.dart';
+import 'package:myapp/floor3.dart';
+import 'package:myapp/servicescategories.dart';
 import '2ndproj/firstpage.dart';
 import 'guidance.dart';
 import 'homepage.dart';
 
 // ignore: camel_case_types
-class floor3 extends StatefulWidget {
-  const floor3({Key? key}) : super(key: key);
+class floor4 extends StatefulWidget {
+  const floor4({Key? key}) : super(key: key);
 
   @override
   _floor3State createState() => _floor3State();
 }
 
 // ignore: camel_case_types
-class _floor3State extends State<floor3> {
+class _floor3State extends State<floor4> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-            appBar: AppBar(
-              elevation: 20.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(20),
-                ),
-              ),
-              backgroundColor: Colors.indigo[800],
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+            floatingActionButton: Container(
+              height: 150,
+              width: 150,
+              child: FloatingActionButton.extended(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
+                label: const Text(
+                  'الرجوع',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+                backgroundColor: Colors.indigo,
               ),
-              // ignore: deprecated_member_use
-
+            ),
+            appBar: AppBar(
+              //leadingWidth: 50,
+              toolbarHeight: 90,
+              centerTitle: true,
+              title: Text('الطابق الرابع',
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(color: Colors.white, fontSize: 45)),
+              elevation: 20.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(30),
+                ),
+              ),
+              backgroundColor: Colors.indigo[800],
               actions: [
                 FlatButton(
                   textColor: Colors.white,
@@ -43,18 +57,36 @@ class _floor3State extends State<floor3> {
                     Navigator.push<void>(
                       context,
                       MaterialPageRoute<void>(
-                        builder: (BuildContext context) => floor4(),
+                        builder: (BuildContext context) => floor3(),
                       ),
                     );
                     setState(() {});
                   },
                   child: Text(
-                    "الطابق الرابع",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    "الطابق الثالث",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                   shape:
                       CircleBorder(side: BorderSide(color: Colors.transparent)),
                 ),
+                FlatButton(
+                  // padding: EdgeInsets.all(4),
+                  textColor: Colors.white,
+                  onPressed: () {
+                    Navigator.push<void>(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => Guidance(),
+                      ),
+                    );
+                    setState(() {});
+                  },
+                  child: Text("الدليل",
+                      style: TextStyle(color: Colors.white, fontSize: 30)),
+                  shape:
+                      CircleBorder(side: BorderSide(color: Colors.transparent)),
+                ),
+                // ignore: deprecated_member_use
                 FlatButton(
                   textColor: Colors.white,
                   onPressed: () {
@@ -68,7 +100,7 @@ class _floor3State extends State<floor3> {
                   },
                   child: Text(
                     "الخدمات",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                   shape:
                       CircleBorder(side: BorderSide(color: Colors.transparent)),
@@ -79,40 +111,22 @@ class _floor3State extends State<floor3> {
                     Navigator.push<void>(
                       context,
                       MaterialPageRoute<void>(
-                        builder: (BuildContext context) => Guidance(),
+                        builder: (BuildContext context) => Servicespage(),
                       ),
                     );
                     setState(() {});
                   },
-                  child: Text("الدليل",
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
-                  shape:
-                      CircleBorder(side: BorderSide(color: Colors.transparent)),
-                ),
-                FlatButton(
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Navigator.push<void>(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => Servicespage(
-                          title: 'الخدمات',
-                        ),
-                      ),
-                    );
-                    setState(() {});
-                  },
-                  child: Text("استعلامات الفواتير",
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                  child: Text(" الفواتير",
+                      style: TextStyle(color: Colors.white, fontSize: 30)),
                   shape:
                       CircleBorder(side: BorderSide(color: Colors.transparent)),
                 ),
                 FlatButton(
                   shape:
                       CircleBorder(side: BorderSide(color: Colors.transparent)),
-                  child: Text('الصفحة الرئيسية',
+                  child: Text(' الرئيسية',
                       textDirection: TextDirection.rtl,
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                      style: TextStyle(color: Colors.white, fontSize: 30)),
                   onPressed: () {
                     Navigator.push<void>(
                       context,
@@ -129,7 +143,7 @@ class _floor3State extends State<floor3> {
             body: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("images/f3.jpg"),
+                  image: AssetImage("images/f4.jpg"),
                   fit: BoxFit.fill,
                 ),
               ),
