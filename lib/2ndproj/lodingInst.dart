@@ -35,8 +35,6 @@ class _LoadingInstState extends State<LoadingInst> {
               orgInstallment(this.clintInfo, this.name0),
         ),
       );
-    } else {
-      throw Exception("Failed to load data");
     }
   }
 

@@ -25,6 +25,7 @@ class Instinfo {
     required this.startDate,
   });
 
+//Json['xxx']==null? "AnyText" : Json['xxx']
   String custId;
   num paraVn;
   String feeKod;
@@ -38,16 +39,16 @@ class Instinfo {
   StartDate startDate;
 
   factory Instinfo.fromJson(Map<String, dynamic> json) => Instinfo(
-        custId: json["CustID"],
-        paraVn: json["Para_vn"],
-        feeKod: json["FeeKod"],
-        feeName: json["FeeName"],
-        feeTimes: json["FeeTimes"],
-        feeValue: json["FeeValue"],
-        calTimes: json["CalTimes"],
-        lastSellId: json["LastSellID"] ?? '',
-        lastFeeTimes: json["LastFeeTimes"] ?? 0,
-        wayOfDeduct: json["WayOfDeduct"],
+        custId: json["CustID"] == null ? " " : json["CustID"],
+        paraVn: json["Para_vn"] == null ? 0 : json["Para_vn"],
+        feeKod: json["FeeKod"] == null ? " " : json["FeeKod"],
+        feeName: json["FeeName"] == null ? " " : json["FeeName"],
+        feeTimes: json["FeeTimes"] == null ? 0 : json["FeeTimes"],
+        feeValue: json["FeeValue"] == null ? " " : json["FeeValue"],
+        calTimes: json["CalTimes"] == null ? 0 : json["CalTimes"],
+        lastSellId: json["LastSellID"] == null ? " " : json["LastSellID"],
+        lastFeeTimes: json["LastFeeTimes"] == null ? 0 : json["LastFeeTimes"],
+        wayOfDeduct: json["WayOfDeduct"] == null ? " " : json["WayOfDeduct"],
         startDate: StartDate.fromJson(json["StartDate"]),
       );
 
@@ -65,6 +66,8 @@ class Instinfo {
         "StartDate": startDate.toJson(),
       };
 }
+
+class Json {}
 
 class StartDate {
   StartDate({

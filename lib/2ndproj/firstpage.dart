@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../guidance.dart';
+import '../homepage.dart';
 import 'Personinfo.dart';
 import 'loding.dart';
 
@@ -27,31 +29,86 @@ class Servicespage extends StatefulWidget {
 }
 
 class _ServicesState extends State<Servicespage> {
-  late TextEditingController _controller;
+  late TextEditingController controllerr;
 
   void initState() {
     super.initState();
-    _controller = TextEditingController();
+    controllerr = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 70.0,
-          backgroundColor: Colors.indigo[800],
-          title: Text("الخدمات",
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.white,
-              )),
+          automaticallyImplyLeading: false,
+          //leadingWidth: 50,
+          toolbarHeight: 90,
           centerTitle: true,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+          title: Text('  الاستفسار',
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.rtl,
+              style: TextStyle(color: Colors.white, fontSize: 45)),
+          elevation: 20.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
           ),
+          backgroundColor: Colors.indigo[800],
+
+          actions: [
+            // ignore: deprecated_member_use
+            FlatButton(
+              // padding: EdgeInsets.all(4),
+              textColor: Colors.white,
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => Guidance(),
+                  ),
+                );
+                setState(() {});
+              },
+              child: Text("الدليل",
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
+              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+            ),
+            // ignore: deprecated_member_use
+            FlatButton(
+              // padding: EdgeInsets.all(4),
+              textColor: Colors.white,
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => Servicespage(),
+                  ),
+                );
+                setState(() {});
+              },
+              child: Text(" الفواتير",
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
+              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+            ),
+            // ignore: deprecated_member_use
+            FlatButton(
+              // padding: EdgeInsets.all(4),
+              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+              child: Text('الرئيسية',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(color: Colors.white, fontSize: 30)),
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => HomePage(),
+                  ),
+                );
+                setState(() {});
+              },
+            ),
+          ],
         ),
         body: Center(
           child: Container(
@@ -75,7 +132,7 @@ class _ServicesState extends State<Servicespage> {
                   child: TextField(
                     enableInteractiveSelection: false,
                     textAlign: TextAlign.right,
-                    controller: _controller,
+                    controller: controllerr,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'ادخل رقم الخدمة',
@@ -88,15 +145,16 @@ class _ServicesState extends State<Servicespage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    if (_controller.text != '') {
+                    print(controllerr.text);
+                    if (controllerr.text != '') {
                       Navigator.of(context).push(
                         MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
-                              Loading(_controller.text),
+                              Loading(controllerr.text),
                         ),
                       );
                     }
-                    _controller.text = '';
+                    //controllerr.text = '';
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(
