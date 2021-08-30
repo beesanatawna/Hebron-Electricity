@@ -8,11 +8,7 @@ import 'mainPage.dart';
 
 class Loading extends StatefulWidget {
   final agreementId;
-  Loading(this.agreementId) {
-    print("kej");
-    print(this.agreementId);
-    print("kej");
-  }
+  Loading(this.agreementId) {}
   @override
   _LoadingState createState() => _LoadingState(this.agreementId);
 }
@@ -23,15 +19,12 @@ class _LoadingState extends State<Loading> {
 
   late List<Personinfo> clintInfo = [];
   void fetchRest() async {
-    print(1111111111111);
-    print(this.agreementId0);
-    print(1111111111111);
     http.Response response = await http.get(Uri.parse(
         'http://api.hepco.ps:8084/integration/login-service.php?id=${this.agreementId0}&fun=logins'));
 
     if (response.statusCode == 200) {
       var jsonArray = jsonDecode(response.body) as List;
-      print(jsonArray);
+
       if (jsonArray.length != 0) {
         clintInfo =
             jsonArray.map((element) => Personinfo.fromJson(element)).toList();

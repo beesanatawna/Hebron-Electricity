@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../guidance.dart';
 import '../homepage.dart';
 import 'Personinfo.dart';
@@ -145,7 +144,6 @@ class _ServicesState extends State<Servicespage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    print(controllerr.text);
                     if (controllerr.text != '') {
                       Navigator.of(context).push(
                         MaterialPageRoute<void>(
@@ -154,7 +152,6 @@ class _ServicesState extends State<Servicespage> {
                         ),
                       );
                     }
-                    //controllerr.text = '';
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(
